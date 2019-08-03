@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,13 @@ public class FoodService {
 	FoodItemRepository foodItemRepository;
 
 	public List<FoodItem> GetAllFoodItems() {
-		return foodItemRepository.findAll();
+		List<FoodItem> items = new ArrayList<>();
+		
+		for (FoodItem item: foodItemRepository.findAll()) {
+			items.add(item);
+		}
+		
+		return items;
 	}
 
 	public FoodItem save(FoodItem item) {
