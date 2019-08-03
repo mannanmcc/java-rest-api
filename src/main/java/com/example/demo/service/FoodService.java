@@ -2,11 +2,13 @@ package com.example.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.FoodItem;
+import com.example.demo.model.FoodItemNotFoundException;
 import com.example.demo.repository.FoodItemRepository;
 
 @Service
@@ -27,4 +29,14 @@ public class FoodService {
 	public FoodItem save(FoodItem item) {
 		return foodItemRepository.save(item);
 	}
+
+	public Optional <FoodItem> getFoodItem(Long itemId) throws FoodItemNotFoundException {
+        Optional <FoodItem> item = foodItemRepository.findById(itemId);
+        if (item == null) {
+            throw new FoodItemNotFoundException(itemId.toString());
+        }
+
+        return item;
+    }
+
 }
