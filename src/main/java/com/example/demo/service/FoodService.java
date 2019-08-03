@@ -30,13 +30,16 @@ public class FoodService {
 		return foodItemRepository.save(item);
 	}
 
-	public Optional <FoodItem> getFoodItem(Long itemId) throws FoodItemNotFoundException {
+	public Optional <FoodItem> getFoodItem(int itemId) throws FoodItemNotFoundException {
         Optional <FoodItem> item = foodItemRepository.findById(itemId);
         if (item == null) {
-            throw new FoodItemNotFoundException(itemId.toString());
+        	throw new FoodItemNotFoundException("Food item not found for id-" + itemId);
         }
 
         return item;
     }
 
+	public void removeItem(int itemId) {
+		foodItemRepository.deleteById(itemId);
+	}
 }

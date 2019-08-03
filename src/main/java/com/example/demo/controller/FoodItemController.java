@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +34,13 @@ public class FoodItemController {
 		return fs.save(foodItem);
 	}
 
-	@GetMapping(value = "/{id}")
-	public Optional <FoodItem> retreiveItem(@PathVariable("id") Long id) throws FoodItemNotFoundException {
+	@GetMapping("/{id}")
+	public Optional <FoodItem> retreiveItem(@PathVariable int id) throws FoodItemNotFoundException {
 		return fs.getFoodItem(id);
+	}
+
+	@DeleteMapping("/{id}")
+	public void removeItem(@PathVariable int id) {
+		fs.removeItem(id);
 	}
 }
