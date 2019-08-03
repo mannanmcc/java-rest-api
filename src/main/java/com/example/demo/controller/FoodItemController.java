@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.Hashtable;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -20,7 +20,7 @@ public class FoodItemController {
 	FoodService fs;
 	
 	@RequestMapping("/list")
-	public Hashtable<String, FoodItem> getAll() {
+	public List<FoodItem> getAll() {
 		return fs.GetAllFoodItems();
 	}
 	

@@ -12,7 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @SuppressWarnings("deprecation")
 @Entity
-@Table(name="food_items")
+@Table(name="food_item")
 @EntityListeners(AuditingEntityListener.class)
 public class FoodItem {
 
